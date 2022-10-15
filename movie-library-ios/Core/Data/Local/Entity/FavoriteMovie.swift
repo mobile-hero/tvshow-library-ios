@@ -10,9 +10,12 @@ import RealmSwift
 
 class FavoriteMovieEntity: Object {
     @objc dynamic var id: Int = 0
+    @objc dynamic var showId: Int = 0
     @objc dynamic var name: String = ""
     @objc dynamic var image: String = ""
     @objc dynamic var summary: String = ""
+    @objc dynamic var season: Int = 0
+    @objc dynamic var number: Int = 0
     
     override class func primaryKey() -> String? {
         return "id"

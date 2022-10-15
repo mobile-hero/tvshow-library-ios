@@ -35,7 +35,7 @@ struct Movie: Codable, Equatable, Identifiable {
     let rating: Rating
     let image: ImageObject?
     let summary: String?
-    let show: Show
+    let show: Show?
     let links: MovieLinks
 
     enum CodingKeys: String, CodingKey {

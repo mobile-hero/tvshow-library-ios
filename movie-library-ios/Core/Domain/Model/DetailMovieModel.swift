@@ -1,13 +1,13 @@
 //
-//  MovieModel.swift
+//  DetailMovieModel.swift
 //  movie-library-ios
 //
-//  Created by Majoo Apple  on 26/09/22.
+//  Created by Majoo Apple  on 15/10/22.
 //
 
 import Foundation
 
-struct MovieModel: Equatable, Identifiable {
+struct DetailMovieModel {
     let id: Int
     let showId: Int
     let name: String
@@ -16,5 +16,3 @@ struct MovieModel: Equatable, Identifiable {
     let season: Int
     let number: Int
 }
-
-typealias MovieModels = [MovieModel]

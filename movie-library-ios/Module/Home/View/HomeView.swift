@@ -7,13 +7,14 @@
 
 import Foundation
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct HomeView: View {
     
     @ObservedObject var presenter: HomePresenter
     
     var body: some View {
-        ZStack {
+        VStack {
             if presenter.loadingState {
                 VStack {
                     Text("Loading...")
@@ -25,12 +26,17 @@ struct HomeView: View {
                         self.presenter.movies,
                         id: \.id
                     ) { movie in
-                        ZStack {
-                            self.presenter.linkBuilder(for: movie) {
-                                Image(movie.image)
+                        self.presenter.linkBuilder(for: movie) {
+                            VStack {
+                                WebImage(url: URL(string: movie.image))
+                                    .placeholder {
+                                        Rectangle().foregroundColor(.gray)
+                                    }
+                                    .indicator(.activity)
+                                    .frame(width: .infinity, height: 150, alignment: .center)
                                 Text(movie.name)
-                            }.buttonStyle(PlainButtonStyle())
-                        }.padding(8)
+                            }.padding(8)
+                        }.buttonStyle(PlainButtonStyle())
                     }
                 }
             } else {

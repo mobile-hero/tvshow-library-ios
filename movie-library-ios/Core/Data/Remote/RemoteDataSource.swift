@@ -28,16 +28,34 @@ final class RemoteDataSource: NSObject {
 extension RemoteDataSource: RemoteDataSourceProtocol {
     
     func getMovies() -> AnyPublisher<Movies, Error> {
-        print("execute getMovies")
         return Future<Movies, Error> { completion in
             guard let url = URL(string: Endpoints.Get.movies.url) else {
                 return
             }
             
-            AF.request(url)
+            self.session.request(url)
                 .validate()
                 .responseDecodable(of: Movies.self) { response in
-                    print(response.error?.localizedDescription)
+                    switch response.result {
+                    case .success(let value):
+                        completion(.success(value))
+                    case let .failure(error):
+                        print(error.localizedDescription)
+                        completion(.failure(URLError.invalidResponse))
+                    }
+                }
+        }.eraseToAnyPublisher()
+    }
+    
+    func getDetail(id: Int, season: Int, number: Int) -> AnyPublisher<Movie, Error> {
+        return Future<Movie, Error> { completion in
+            guard let url = URL(string: Endpoints.Get.episodeByNumber(id).url) else {
+                return
+            }
+            
+            self.session.request(url, parameters: ["season": season, "number": number])
+                .validate()
+                .responseDecodable(of: Movie.self) { response in
                     switch response.result {
                     case .success(let value):
                         completion(.success(value))

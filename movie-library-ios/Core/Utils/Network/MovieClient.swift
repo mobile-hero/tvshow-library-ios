@@ -19,11 +19,13 @@ protocol Endpoint {
 enum Endpoints {
     enum Get: Endpoint {
         case movies
+        case episodeByNumber(Int)
         
         var url: String {
             let path: String = {
                 switch self {
                 case .movies: return "schedule"
+                case .episodeByNumber(let id): return "shows/\(id)/episodebynumber"
                 }
             }()
             

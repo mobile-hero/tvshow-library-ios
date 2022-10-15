@@ -22,11 +22,12 @@ class Injection: NSObject {
         return HomeInteractor(repository: repository)
     }
     
-    func provideDetail() -> Any {
-        return false
+    func provideDetail() -> DetailUseCase {
+        let repository = provideRepository()
+        return DetailInteractor(repository: repository)
     }
     
-    let sessionManager: Session = {
+    lazy var sessionManager: Session = {
         let configuration = URLSessionConfiguration.af.default
         configuration.timeoutIntervalForRequest = 10
         

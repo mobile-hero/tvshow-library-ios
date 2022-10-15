@@ -10,6 +10,7 @@ import Combine
 
 protocol MovieRepositoryProtocol {
     func getMovies() -> AnyPublisher<MovieModels, Error>
+    func getDetail(id: Int, season: Int, number: Int) -> AnyPublisher<DetailMovieModel, Error>
     func getFavoriteMovies() -> AnyPublisher<MovieModels, Error>
     func addFavorite(movie: MovieModel) -> AnyPublisher<Bool, Error>
     func removeFavorite(movie: MovieModel) -> AnyPublisher<Bool, Error>
@@ -35,6 +36,12 @@ extension MovieRepository: MovieRepositoryProtocol {
     func getMovies() -> AnyPublisher<MovieModels, Error> {
         return remote.getMovies().map {
             MovieMapper.mapMovieResponsesToDomains(input: $0)
+        }.eraseToAnyPublisher()
+    }
+    
+    func getDetail(id: Int, season: Int, number: Int) -> AnyPublisher<DetailMovieModel, Error> {
+        return remote.getDetail(id: id, season: season, number: number).map {
+            DetailMovieMapper.mapMovieResponseToDomain(input: $0)
         }.eraseToAnyPublisher()
     }
     

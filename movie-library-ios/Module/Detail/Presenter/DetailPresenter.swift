@@ -1,30 +1,32 @@
 //
-//  HomePresenter.swift
+//  DetailPresenter.swift
 //  movie-library-ios
 //
-//  Created by Majoo Apple  on 26/09/22.
+//  Created by Majoo Apple  on 15/10/22.
 //
 
 import SwiftUI
 import Combine
 
-class HomePresenter: ObservableObject {
-
-    private var cancellables: Set<AnyCancellable> = []
-    private var router = HomeRouter()
-    private let homeUseCase: HomeUseCase
+class DetailPresenter: ObservableObject {
     
-    @Published var movies: MovieModels = []
+    private var cancellables: Set<AnyCancellable> = []
+    private var router = DetailRouter()
+    private let detailUseCase: DetailUseCase
+    
+    @Published var movie: MovieModel
+    @Published var detailMovie: DetailMovieModel?
     @Published var errorMessage: String = ""
     @Published var loadingState: Bool = false
     
-    init(homeUseCase: HomeUseCase) {
-        self.homeUseCase = homeUseCase
+    init(movie: MovieModel, detailUseCase: DetailUseCase) {
+        self.movie = movie
+        self.detailUseCase = detailUseCase
     }
     
-    func getMovies() {
+    func getDetail() {
         loadingState = true
-        homeUseCase.getMovies()
+        detailUseCase.getDetail(id: movie.showId, season: movie.season, number: movie.number)
             .receive(on: RunLoop.main)
             .sink { completion in
                 switch completion {
@@ -34,16 +36,9 @@ class HomePresenter: ObservableObject {
                 case .finished:
                     self.loadingState = false
                 }
-            } receiveValue: { movies in
-                self.movies = movies
+            } receiveValue: { detail in
+                self.detailMovie = detail
             }
             .store(in: &cancellables)
-    }
-    
-    func linkBuilder<Content: View>(
-        for movie: MovieModel,
-        @ViewBuilder content: () -> Content
-    ) -> some View {
-        NavigationLink(destination: router.makeDetailView(for: movie)) { content() }
     }
 }

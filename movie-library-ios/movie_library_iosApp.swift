@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Alamofire
 
 @main
 struct movie_library_iosApp: App {
@@ -17,7 +18,9 @@ struct movie_library_iosApp: App {
         WindowGroup {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            HomeView(presenter: HomePresenter(homeUseCase: injection.provideHome()))
+            NavigationView {
+                HomeView(presenter: HomePresenter(homeUseCase: injection.provideHome()))
+            }
         }
     }
 }
