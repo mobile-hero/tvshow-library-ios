@@ -13,8 +13,9 @@ final class MovieMapper {
             return MovieModel(
                 id: origin.id,
                 showId: origin.show!.id,
+                showName: origin.show!.name,
                 name: origin.name,
-                image: origin.image?.medium ?? origin.image?.original ?? "-",
+                image: origin.image?.medium ?? origin.image?.original ?? origin.show?.image?.medium ?? origin.show?.image?.original ?? "-",
                 summary: origin.summary ?? "No summary available",
                 season: origin.season,
                 number: origin.number ?? 0
@@ -26,8 +27,9 @@ final class MovieMapper {
         return MovieModel(
             id: origin.id,
             showId: origin.show!.id,
+            showName: origin.show!.name,
             name: origin.name,
-            image: origin.image?.medium ?? origin.image?.original ?? "-",
+            image: origin.image?.medium ?? origin.image?.original ?? origin.show?.image?.medium ?? origin.show?.image?.original ?? "-",
             summary: origin.summary ?? "No summary available",
             season: origin.season,
             number: origin.number ?? 0
@@ -39,6 +41,7 @@ final class MovieMapper {
             return MovieModel(
                 id: origin.id,
                 showId: origin.showId,
+                showName: origin.showName,
                 name: origin.name,
                 image: origin.image,
                 summary: origin.summary.isEmpty ? origin.summary : "No summary available",
@@ -52,6 +55,7 @@ final class MovieMapper {
         let result = FavoriteMovieEntity()
         result.id = origin.id
         result.showId = origin.show!.id
+        result.showName = origin.show!.name
         result.name = origin.name
         result.image = origin.image?.medium ?? ""
         result.summary = origin.summary ?? ""
@@ -64,6 +68,7 @@ final class MovieMapper {
         let result = FavoriteMovieEntity()
         result.id = origin.id
         result.showId = origin.showId
+        result.showName = origin.showName
         result.name = origin.name
         result.image = origin.image
         result.summary = origin.summary

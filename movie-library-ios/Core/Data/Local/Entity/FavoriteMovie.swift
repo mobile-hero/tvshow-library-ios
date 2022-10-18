@@ -11,6 +11,7 @@ import RealmSwift
 class FavoriteMovieEntity: Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var showId: Int = 0
+    @objc dynamic var showName: String = ""
     @objc dynamic var name: String = ""
     @objc dynamic var image: String = ""
     @objc dynamic var summary: String = ""

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct DetailMovieModel {
     let id: Int
@@ -15,4 +16,15 @@ struct DetailMovieModel {
     let summary: String
     let season: Int
     let number: Int
+    
+    var formattedSummary: NSAttributedString {
+        let attStr = try! NSMutableAttributedString(data: summary.data(using: .utf8)!,
+                                             options: [.documentType: NSAttributedString.DocumentType.html,
+                                                       .characterEncoding: String.Encoding.utf8.rawValue],
+                                             documentAttributes: nil)
+        
+        attStr.addAttribute(.font, value: UIFont.systemFont(ofSize: 16), range: NSRange(location: 0, length: attStr.length))
+        
+        return attStr
+    }
 }

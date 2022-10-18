@@ -34,7 +34,15 @@ struct HomeView: View {
                                     }
                                     .indicator(.activity)
                                     .frame(width: .infinity, height: 150, alignment: .center)
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipShape(Rectangle(), style: FillStyle(eoFill: true, antialiased: true))
+                                    .clipped()
+                                Text(movie.showName)
+                                    .font(Font.system(size: 14))
+                                    .foregroundColor(Color(UIColor.darkGray))
+                                    .multilineTextAlignment(.center)
                                 Text(movie.name)
+                                    .multilineTextAlignment(.center)
                             }.padding(8)
                         }.buttonStyle(PlainButtonStyle())
                     }

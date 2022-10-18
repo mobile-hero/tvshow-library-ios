@@ -10,6 +10,7 @@ import Foundation
 struct MovieModel: Equatable, Identifiable {
     let id: Int
     let showId: Int
+    let showName: String
     let name: String
     let image: String
     let summary: String
