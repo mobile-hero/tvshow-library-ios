@@ -12,6 +12,8 @@ import SDWebImageSwiftUI
 struct DetailView: View {
     
     @ObservedObject var presenter: DetailPresenter
+    @State var aspectRatio: Double = 0.0
+    @State var imageHeight: Double = 200
     
     var body: some View {
         VStack(alignment: .center) {
@@ -22,28 +24,43 @@ struct DetailView: View {
                 let detail = presenter.detailMovie!
                 ScrollView{
                     VStack(alignment: .leading) {
-                        WebImage(url: URL(string: detail.image))
+                        let width = UIScreen.main.bounds.width
+                        WebImage(url: URL(string: detail.imageOriginal))
+                            .onSuccess(perform: { image, data, cacheType in
+                                print(image.size)
+                                self.aspectRatio = image.size.width / image.size.height
+                                self.imageHeight = width / aspectRatio
+                            })
+                            .resizable()
                             .placeholder {
                                 Rectangle().foregroundColor(.gray)
                             }
                             .indicator(.activity)
-                            .frame(width: .infinity, height: 150, alignment: .center)
-                            .scaledToFit()
+                            .aspectRatio(aspectRatio, contentMode: .fit)
+                            .frame(width: width, height: imageHeight, alignment: .center)
                             .padding(.bottom, 5)
-                        Text(detail.name).font(Font.system(size: 25))
-                        Text("S\(detail.season)-E\(detail.number)")
-                            .fontWeight(.bold)
-                            .padding(.bottom, 10)
-                        Divider()
-                        Rectangle().foregroundColor(.clear).frame(height: 10)
-                        Text(AttributedString(detail.formattedSummary))
+                            .clipped()
+                        VStack(alignment: .leading) {
+                            Text(detail.showName)
+                                .font(Font.system(size: 16))
+                                .foregroundColor(.gray)
+                            Text(detail.name)
+                                .font(Font.system(size: 25))
+                            Text("S\(detail.season)-E\(detail.number)")
+                                .fontWeight(.bold)
+                                .foregroundColor(.indigo)
+                            Divider()
+                                .padding(.vertical, 10)
+                            Text(AttributedString(detail.formattedSummary))
+                        }
+                        .padding(.horizontal, 8)
                     }
+                    .padding(.vertical, 10)
                 }
             } else {
                 Text(presenter.errorMessage)
             }
         }
-        .padding(10)
         .onAppear {
             self.presenter.getDetail()
         }.navigationBarTitle(

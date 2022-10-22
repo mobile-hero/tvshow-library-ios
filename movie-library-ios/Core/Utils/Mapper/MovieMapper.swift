@@ -15,9 +15,10 @@ final class MovieMapper {
                 showId: origin.show!.id,
                 showName: origin.show!.name,
                 name: origin.name,
-                image: origin.image?.medium ?? origin.image?.original ?? origin.show?.image?.medium ?? origin.show?.image?.original ?? "-",
+                image: origin.image?.medium ?? origin.show?.image?.medium ?? "-",
+                imageOriginal: origin.image?.original ?? origin.show?.image?.original ?? "-",
                 summary: origin.summary ?? "No summary available",
-                season: origin.season,
+                season: origin.season ?? 0,
                 number: origin.number ?? 0
             )
         }
@@ -29,9 +30,10 @@ final class MovieMapper {
             showId: origin.show!.id,
             showName: origin.show!.name,
             name: origin.name,
-            image: origin.image?.medium ?? origin.image?.original ?? origin.show?.image?.medium ?? origin.show?.image?.original ?? "-",
+            image: origin.image?.medium ?? origin.show?.image?.medium ?? "-",
+            imageOriginal: origin.image?.original ?? origin.show?.image?.original ?? "-",
             summary: origin.summary ?? "No summary available",
-            season: origin.season,
+            season: origin.season ?? 0,
             number: origin.number ?? 0
         )
     }
@@ -44,6 +46,7 @@ final class MovieMapper {
                 showName: origin.showName,
                 name: origin.name,
                 image: origin.image,
+                imageOriginal: origin.imageOriginal,
                 summary: origin.summary.isEmpty ? origin.summary : "No summary available",
                 season: origin.season,
                 number: origin.number
@@ -58,8 +61,9 @@ final class MovieMapper {
         result.showName = origin.show!.name
         result.name = origin.name
         result.image = origin.image?.medium ?? ""
+        result.imageOriginal = origin.image?.original ?? ""
         result.summary = origin.summary ?? ""
-        result.season = origin.season
+        result.season = origin.season ?? 0
         result.number = origin.number ?? 0
         return result
     }
@@ -71,6 +75,7 @@ final class MovieMapper {
         result.showName = origin.showName
         result.name = origin.name
         result.image = origin.image
+        result.imageOriginal = origin.imageOriginal
         result.summary = origin.summary
         result.season = origin.season
         result.number = origin.number

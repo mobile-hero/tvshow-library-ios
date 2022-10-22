@@ -12,10 +12,12 @@ final class DetailMovieMapper {
         return DetailMovieModel(
             id: origin.id,
             showId: origin.show?.id ?? -1,
+            showName: "",
             name: origin.name,
-            image: origin.image?.medium ?? origin.image?.original ?? "-",
+            image: origin.image?.medium ?? origin.show?.image?.medium ?? "-",
+            imageOriginal: origin.image?.original ?? origin.show?.image?.original ?? "-",
             summary: origin.summary ?? "No summary available",
-            season: origin.season,
+            season: origin.season ?? 0,
             number: origin.number ?? 0
         )
     }
@@ -24,8 +26,10 @@ final class DetailMovieMapper {
         let result = FavoriteMovieEntity()
         result.id = origin.id
         result.showId = origin.showId
+        result.showName = origin.showName
         result.name = origin.name
         result.image = origin.image
+        result.imageOriginal = origin.imageOriginal
         result.summary = origin.summary
         result.season = origin.season
         result.number = origin.number

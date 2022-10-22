@@ -38,6 +38,9 @@ class DetailPresenter: ObservableObject {
                 }
             } receiveValue: { detail in
                 self.detailMovie = detail
+                self.detailMovie?.showName = self.movie.showName
+                self.detailMovie?.image = self.movie.image
+                self.detailMovie?.imageOriginal = self.movie.imageOriginal
             }
             .store(in: &cancellables)
     }

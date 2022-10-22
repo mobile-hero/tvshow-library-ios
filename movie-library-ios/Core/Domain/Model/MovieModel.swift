@@ -13,6 +13,7 @@ struct MovieModel: Equatable, Identifiable {
     let showName: String
     let name: String
     let image: String
+    let imageOriginal: String
     let summary: String
     let season: Int
     let number: Int

@@ -14,6 +14,7 @@ class FavoriteMovieEntity: Object {
     @objc dynamic var showName: String = ""
     @objc dynamic var name: String = ""
     @objc dynamic var image: String = ""
+    @objc dynamic var imageOriginal: String = ""
     @objc dynamic var summary: String = ""
     @objc dynamic var season: Int = 0
     @objc dynamic var number: Int = 0

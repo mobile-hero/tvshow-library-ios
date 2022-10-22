@@ -25,12 +25,12 @@ struct Movie: Codable, Equatable, Identifiable {
     let id: Int
     let url: String
     let name: String
-    let season: Int
+    let season: Int?
     let number: Int?
-    let type: String
-    let airdate: String
-    let airtime: String
-    let airstamp: String
+    let type: String?
+    let airdate: String?
+    let airtime: String?
+    let airstamp: String?
     let runtime: Int?
     let rating: Rating
     let image: ImageObject?
@@ -108,7 +108,7 @@ struct MovieLinks: Codable, Equatable {
 
 // MARK: - SelfClass
 struct SelfClass: Codable, Equatable {
-    let href: String
+    let href: String?
 }
 
 //
@@ -151,12 +151,11 @@ struct Show: Codable, Equatable {
     let id: Int
     let url: String
     let name, type: String
-//    let language: Language
-    let language: String
+    let language: String?
     let genres: [String]
     let status: Status
     let runtime, averageRuntime: Int?
-    let premiered: String
+    let premiered: String?
     let ended: String?
     let officialSite: String?
     let schedule: Schedule
@@ -167,7 +166,7 @@ struct Show: Codable, Equatable {
     let externals: Externals
     let image: ImageObject?
     let summary: String?
-    let updated: Int
+    let updated: Int?
     let links: ShowLinks
 
     enum CodingKeys: String, CodingKey {
@@ -195,12 +194,6 @@ struct Show: Codable, Equatable {
 struct Externals: Codable, Equatable {
     let tvrage, thetvdb: Int?
     let imdb: String?
-}
-
-enum Language: String, Codable, Equatable {
-    case english = "English"
-    case japanese = "Japanese"
-    case spanish = "Spanish"
 }
 
 //

@@ -219,6 +219,7 @@
 			children = (
 				FFA6EEA528E18C3E009708CA /* Home */,
 				FFA6EEA628E18C44009708CA /* Detail */,
+				FFAB8DE02904148300F45134 /* Favorite */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -401,6 +402,37 @@
 				FFB71B1728FA918F0041EF7F /* DetailInteractor.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		FFAB8DE02904148300F45134 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				FFAB8DE12904148C00F45134 /* Presenter */,
+				FFAB8DE22904149400F45134 /* View */,
+				FFAB8DE32904149A00F45134 /* Router */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		FFAB8DE12904148C00F45134 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FFAB8DE22904149400F45134 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFAB8DE32904149A00F45134 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		FFB71B0E28FA8BC60041EF7F /* Presenter */ = {

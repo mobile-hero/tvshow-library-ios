@@ -11,8 +11,10 @@ import UIKit
 struct DetailMovieModel {
     let id: Int
     let showId: Int
+    var showName: String
     let name: String
-    let image: String
+    var image: String
+    var imageOriginal: String
     let summary: String
     let season: Int
     let number: Int
