@@ -1,18 +1,14 @@
 //
-//  HomeView.swift
-//  tvShow-library-ios
+//  FavoriteView.swift
+//  movie-library-ios
 //
-//  Created by Majoo Apple  on 26/09/22.
+//  Created by Majoo Apple  on 23/10/22.
 //
 
-import Foundation
 import SwiftUI
-import SDWebImageSwiftUI
-import UIKit
 
-struct HomeView: View {
-    
-    @ObservedObject var presenter: HomePresenter
+struct FavoriteView: View {
+    @ObservedObject var presenter: FavoritePresenter
     
     let columns = [GridItem(alignment: Alignment(horizontal: .leading, vertical: .top)),
                    GridItem(alignment: Alignment(horizontal: .leading, vertical: .top))]
@@ -42,15 +38,11 @@ struct HomeView: View {
                     Text(presenter.errorMessage)
                 }
             }.onAppear {
-                if self.presenter.tvShows.count == 0 {
-                    self.presenter.getTvShows()
-                }
+                self.presenter.getTvShows()
             }.navigationBarTitle(
-                Text("TV Shows"),
+                Text("Favorites"),
                 displayMode: .automatic
             )
         }
     }
 }
-
-

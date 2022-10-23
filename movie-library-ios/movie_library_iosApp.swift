@@ -18,9 +18,10 @@ struct tvShow_library_iosApp: App {
         WindowGroup {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            NavigationView {
-                HomeView(presenter: HomePresenter(homeUseCase: injection.provideHome()))
-            }
+//            NavigationView {
+//                HomeView(presenter: HomePresenter(homeUseCase: injection.provideHome()))
+//            }
+            MainTabView()
         }
     }
 }

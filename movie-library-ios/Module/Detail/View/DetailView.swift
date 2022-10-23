@@ -39,7 +39,6 @@ struct DetailView: View {
                                 .indicator(.activity)
                                 .aspectRatio(aspectRatio, contentMode: .fit)
                                 .frame(width: width, height: imageHeight, alignment: .center)
-                                .padding(.bottom, 5)
                                 .clipped()
                             let isFavorite = presenter.isFavorite
                             Button(isFavorite ? "Remove Favorite" : "Add Favorite") {
@@ -56,6 +55,7 @@ struct DetailView: View {
                             .padding(10)
                             
                         }
+                        .padding(.bottom, 5)
                         VStack(alignment: .leading) {
                             Text(detail.showName)
                                 .font(Font.system(size: 16))
@@ -79,38 +79,10 @@ struct DetailView: View {
         }
         .onAppear {
             self.presenter.getDetail()
-        }.navigationBarTitle(
+        }
+        .navigationBarTitle(
             Text("Detail"),
             displayMode: .automatic
         )
-    }
-}
-
-struct AttributedText: UIViewRepresentable {
-    
-    let attributedString: NSAttributedString
-    
-    init(_ attributedString: NSAttributedString) {
-        self.attributedString = attributedString
-    }
-    
-    init(_ text: String) {
-        self.attributedString = try! NSAttributedString(data: text.data(using: .utf8)!,
-                                                        options: [.documentType: NSAttributedString.DocumentType.html,
-                                                                  .characterEncoding: String.Encoding.utf8.rawValue],
-                                                        documentAttributes: nil)
-    }
-    
-    func makeUIView(context: Context) -> UILabel {
-        let label = UILabel()
-        
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        
-        return label
-    }
-    
-    func updateUIView(_ uiView: UILabel, context: Context) {
-        uiView.attributedText = attributedString
     }
 }

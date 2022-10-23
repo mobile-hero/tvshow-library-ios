@@ -1,23 +1,3 @@
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let tvShows = try? newJSONDecoder().decode(TvShows.self, from: jsonData)
-
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.tvShowTask(with: url) { tvShow, response, error in
-//     if let tvShow = tvShow {
-//       ...
-//     }
-//   }
-//   task.resume()
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
 import Foundation
 
 // MARK: - TvShow
@@ -46,41 +26,11 @@ struct TvShow: Codable, Equatable, Identifiable {
 
 typealias TvShows = [TvShow]
 
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.imageTask(with: url) { image, response, error in
-//     if let image = image {
-//       ...
-//     }
-//   }
-//   task.resume()
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
 // MARK: - Image
 struct ImageObject: Codable, Equatable {
     let medium: String
     let original: String
 }
-
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.tvShowLinksTask(with: url) { tvShowLinks, response, error in
-//     if let tvShowLinks = tvShowLinks {
-//       ...
-//     }
-//   }
-//   task.resume()
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
 
 // MARK: - TvShowLinks
 struct TvShowLinks: Codable, Equatable {
@@ -91,60 +41,15 @@ struct TvShowLinks: Codable, Equatable {
     }
 }
 
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.selfClassTask(with: url) { selfClass, response, error in
-//     if let selfClass = selfClass {
-//       ...
-//     }
-//   }
-//   task.resume()
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
 // MARK: - SelfClass
 struct SelfClass: Codable, Equatable {
     let href: String?
 }
 
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.ratingTask(with: url) { rating, response, error in
-//     if let rating = rating {
-//       ...
-//     }
-//   }
-//   task.resume()
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
 // MARK: - Rating
 struct Rating: Codable, Equatable {
     let average: Double?
 }
-
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.showTask(with: url) { show, response, error in
-//     if let show = show {
-//       ...
-//     }
-//   }
-//   task.resume()
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
 
 // MARK: - Show
 struct Show: Codable, Equatable {
@@ -153,7 +58,7 @@ struct Show: Codable, Equatable {
     let name, type: String
     let language: String?
     let genres: [String]
-    let status: Status
+    let status: String
     let runtime, averageRuntime: Int?
     let premiered: String?
     let ended: String?
@@ -175,41 +80,11 @@ struct Show: Codable, Equatable {
     }
 }
 
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.externalsTask(with: url) { externals, response, error in
-//     if let externals = externals {
-//       ...
-//     }
-//   }
-//   task.resume()
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
 // MARK: - Externals
 struct Externals: Codable, Equatable {
     let tvrage, thetvdb: Int?
     let imdb: String?
 }
-
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.showLinksTask(with: url) { showLinks, response, error in
-//     if let showLinks = showLinks {
-//       ...
-//     }
-//   }
-//   task.resume()
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
 
 // MARK: - ShowLinks
 struct ShowLinks: Codable, Equatable {
@@ -223,21 +98,6 @@ struct ShowLinks: Codable, Equatable {
     }
 }
 
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.networkTask(with: url) { network, response, error in
-//     if let network = network {
-//       ...
-//     }
-//   }
-//   task.resume()
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
 // MARK: - Network
 struct Network: Codable, Equatable {
     let id: Int
@@ -246,156 +106,15 @@ struct Network: Codable, Equatable {
     let officialSite: String?
 }
 
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.countryTask(with: url) { country, response, error in
-//     if let country = country {
-//       ...
-//     }
-//   }
-//   task.resume()
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
 // MARK: - Country
 struct Country: Codable, Equatable {
-//    let name: Name
-//    let code: Code
-//    let timezone: Timezone
     let name: String
     let code: String
     let timezone: String
 }
 
-enum Code: String, Codable, Equatable {
-    case us = "US"
-}
-
-enum Name: String, Codable, Equatable {
-    case unitedStates = "United States"
-}
-
-enum Timezone: String, Codable, Equatable {
-    case americaNewYork = "America/New_York"
-}
-
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.scheduleTask(with: url) { schedule, response, error in
-//     if let schedule = schedule {
-//       ...
-//     }
-//   }
-//   task.resume()
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
 // MARK: - Schedule
 struct Schedule: Codable, Equatable {
     let time: String
-    let days: [Day]
+    let days: [String]
 }
-
-enum Day: String, Codable, Equatable {
-    case friday = "Friday"
-    case monday = "Monday"
-    case saturday = "Saturday"
-    case sunday = "Sunday"
-    case thursday = "Thursday"
-    case tuesday = "Tuesday"
-    case wednesday = "Wednesday"
-}
-
-enum Status: String, Codable, Equatable {
-    case running = "Running"
-    case toBeDetermined = "To Be Determined"
-    case inDevelopment = "In Development"
-}
-
-enum TypeEnum: String, Codable, Equatable {
-    case insignificantSpecial = "insignificant_special"
-    case regular = "regular"
-}
-
-// MARK: - Helper functions for creating encoders and decoders
-
-func newJSONDecoder() -> JSONDecoder {
-    let decoder = JSONDecoder()
-    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-        decoder.dateDecodingStrategy = .iso8601
-    }
-    return decoder
-}
-
-func newJSONEncoder() -> JSONEncoder {
-    let encoder = JSONEncoder()
-    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-        encoder.dateEncodingStrategy = .iso8601
-    }
-    return encoder
-}
-
-enum APIError: LocalizedError, Hashable, Equatable {
-    /// User misuse
-    case expected(Error, _ localizedDescription: String? = nil)
-    /// Developer issue
-    case unexpected(Error, _ localizedDescription: String? = nil)
-
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(errorDescription)
-    }
-
-    public static func ==(lhs: APIError, rhs: APIError) -> Bool {
-        return lhs.localizedDescription == rhs.localizedDescription
-    }
-
-    public var errorDescription: String? {
-        switch self {
-        case .expected(let error, let description):
-            return description ?? error.localizedDescription
-        case .unexpected(let error, let description):
-            return description ?? error.localizedDescription
-        }
-    }
-
-    public var error: Error {
-        switch self {
-        case .expected(let error, _):
-            return error
-        case .unexpected(let error, _):
-            return error
-        }
-    }
-}
-
-
-//// MARK: - URLSession response handlers
-//
-//extension URLSession {
-//    func codableTask<T: Codable>(with url: URL, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-//        return self.dataTask(with: url) { data, response, error in
-//            guard let data = data, error == nil else {
-//                print(error)
-//                completionHandler(nil, response, error)
-//                return
-//            }
-//            do {
-//                completionHandler(try newJSONDecoder().decode(T.self, from: data), response, nil)
-//            } catch  {
-//                completionHandler(nil, response, error)
-//            }
-//        }
-//    }
-//
-////    func tvShowsTask(completionHandler: @escaping (TvShows?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-////        return self.codableTask(with: URL(string: baseUrl + "schedule")!, completionHandler: completionHandler)
-////    }
-//}

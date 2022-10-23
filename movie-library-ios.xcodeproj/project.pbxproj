@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		FF81B58F2904B98E0068BF72 /* GetFavoriteStatusInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81B58E2904B98E0068BF72 /* GetFavoriteStatusInteractor.swift */; };
+		FF81B5912904DF810068BF72 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81B5902904DF810068BF72 /* FavoriteView.swift */; };
+		FF81B5932904E1F40068BF72 /* FavoriteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81B5922904E1F40068BF72 /* FavoriteRouter.swift */; };
+		FF81B5982904E34B0068BF72 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81B5972904E34B0068BF72 /* MainTabView.swift */; };
+		FF81B59A2904E70D0068BF72 /* ShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81B5992904E70D0068BF72 /* ShowCell.swift */; };
+		FF81B59D2904EC6B0068BF72 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81B59C2904EC6B0068BF72 /* AboutView.swift */; };
 		FFA6EE5528E16E16009708CA /* movie_library_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6EE5428E16E16009708CA /* movie_library_iosApp.swift */; };
 		FFA6EE5728E16E16009708CA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6EE5628E16E16009708CA /* ContentView.swift */; };
 		FFA6EE5928E16E1B009708CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFA6EE5828E16E1B009708CA /* Assets.xcassets */; };
@@ -75,6 +80,11 @@
 
 /* Begin PBXFileReference section */
 		FF81B58E2904B98E0068BF72 /* GetFavoriteStatusInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoriteStatusInteractor.swift; sourceTree = "<group>"; };
+		FF81B5902904DF810068BF72 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		FF81B5922904E1F40068BF72 /* FavoriteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRouter.swift; sourceTree = "<group>"; };
+		FF81B5972904E34B0068BF72 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		FF81B5992904E70D0068BF72 /* ShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCell.swift; sourceTree = "<group>"; };
+		FF81B59C2904EC6B0068BF72 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		FFA6EE5128E16E16009708CA /* movie-library-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "movie-library-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFA6EE5428E16E16009708CA /* movie_library_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movie_library_iosApp.swift; sourceTree = "<group>"; };
 		FFA6EE5628E16E16009708CA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -151,6 +161,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF81B5942904E30B0068BF72 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				FF81B5972904E34B0068BF72 /* MainTabView.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
+		FF81B59B2904EC5B0068BF72 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				FF81B59C2904EC6B0068BF72 /* AboutView.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
 		FFA6EE4828E16E16009708CA = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +253,8 @@
 		FFA6EE8428E16FA0009708CA /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				FF81B5942904E30B0068BF72 /* TabView */,
+				FF81B59B2904EC5B0068BF72 /* About */,
 				FFA6EEA528E18C3E009708CA /* Home */,
 				FFA6EEA628E18C44009708CA /* Detail */,
 				FFAB8DE02904148300F45134 /* Favorite */,
@@ -288,6 +316,7 @@
 				FFA6EEC528E1D4C4009708CA /* RoundedCorner.swift */,
 				FFA6EEC728E1D4C4009708CA /* SearchBar.swift */,
 				FFA6EEC328E1D4C4009708CA /* TabItem.swift */,
+				FF81B5992904E70D0068BF72 /* ShowCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -439,6 +468,7 @@
 		FFAB8DE22904149400F45134 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FF81B5902904DF810068BF72 /* FavoriteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -446,6 +476,7 @@
 		FFAB8DE32904149A00F45134 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				FF81B5922904E1F40068BF72 /* FavoriteRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -617,6 +648,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF81B59A2904E70D0068BF72 /* ShowCell.swift in Sources */,
 				FFA6EEBA28E1BCBF009708CA /* MovieModel.swift in Sources */,
 				FFA6EEBE28E1C2D4009708CA /* MovieMapper.swift in Sources */,
 				FFB71B1228FA8BFD0041EF7F /* DetailPresenter.swift in Sources */,
@@ -634,8 +666,11 @@
 				FFA6EEA428E1861A009708CA /* MovieClient.swift in Sources */,
 				FFA6EEC028E1CC62009708CA /* HomeRouter.swift in Sources */,
 				FFB71B1A28FB00C60041EF7F /* DetailMovieModel.swift in Sources */,
+				FF81B5932904E1F40068BF72 /* FavoriteRouter.swift in Sources */,
 				FFA6EECD28E1D4CE009708CA /* TabItem.swift in Sources */,
+				FF81B5982904E34B0068BF72 /* MainTabView.swift in Sources */,
 				FFA6EEC228E1D432009708CA /* HomeView.swift in Sources */,
+				FF81B59D2904EC6B0068BF72 /* AboutView.swift in Sources */,
 				FFA6EECE28E1D4CE009708CA /* ActivityIndicator.swift in Sources */,
 				FFAB8DEB29044E5D00F45134 /* RemoveFavoriteInteractor.swift in Sources */,
 				FFA6EEB028E1B04D009708CA /* LocaleDataSource.swift in Sources */,
@@ -653,6 +688,7 @@
 				FFA6EEA228E18369009708CA /* RemoteDataSource.swift in Sources */,
 				FFA6EE5528E16E16009708CA /* movie_library_iosApp.swift in Sources */,
 				FFA6EEB828E1BCA8009708CA /* HomeInteractor.swift in Sources */,
+				FF81B5912904DF810068BF72 /* FavoriteView.swift in Sources */,
 				FFAB8DE929044BED00F45134 /* AddFavoriteInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
