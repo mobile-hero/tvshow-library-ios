@@ -1,6 +1,6 @@
 //
 //  HomeUseCase.swift
-//  movie-library-ios
+//  tvShow-library-ios
 //
 //  Created by Majoo Apple  on 26/09/22.
 //
@@ -9,17 +9,17 @@ import Foundation
 import Combine
 
 protocol HomeUseCase {
-    func getMovies() -> AnyPublisher<MovieModels, Error>
+    func getTvShows() -> AnyPublisher<TvShowModels, Error>
 }
 
 class HomeInteractor: HomeUseCase {
-    private let repository: MovieRepositoryProtocol
+    private let repository: TvShowRepositoryProtocol
     
-    required init(repository: MovieRepositoryProtocol){
+    required init(repository: TvShowRepositoryProtocol){
         self.repository = repository
     }
     
-    func getMovies() -> AnyPublisher<MovieModels, Error> {
-        return repository.getMovies()
+    func getTvShows() -> AnyPublisher<TvShowModels, Error> {
+        return repository.getTvShows()
     }
 }

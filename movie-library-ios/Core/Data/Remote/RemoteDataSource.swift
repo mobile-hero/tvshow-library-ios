@@ -1,6 +1,6 @@
 //
 //  RemoteDataSource.swift
-//  movie-library-ios
+//  tvShow-library-ios
 //
 //  Created by Majoo Apple  on 26/09/22.
 //
@@ -10,7 +10,7 @@ import Alamofire
 import Combine
 
 protocol RemoteDataSourceProtocol: AnyObject {
-    func getMovies() -> AnyPublisher<Movies, Error>
+    func getTvShows() -> AnyPublisher<TvShows, Error>
 }
 
 final class RemoteDataSource: NSObject {
@@ -27,15 +27,15 @@ final class RemoteDataSource: NSObject {
 
 extension RemoteDataSource: RemoteDataSourceProtocol {
     
-    func getMovies() -> AnyPublisher<Movies, Error> {
-        return Future<Movies, Error> { completion in
-            guard let url = URL(string: Endpoints.Get.movies.url) else {
+    func getTvShows() -> AnyPublisher<TvShows, Error> {
+        return Future<TvShows, Error> { completion in
+            guard let url = URL(string: Endpoints.Get.tvShows.url) else {
                 return
             }
             
             self.session.request(url)
                 .validate()
-                .responseDecodable(of: Movies.self) { response in
+                .responseDecodable(of: TvShows.self) { response in
                     switch response.result {
                     case .success(let value):
                         completion(.success(value))
@@ -47,15 +47,15 @@ extension RemoteDataSource: RemoteDataSourceProtocol {
         }.eraseToAnyPublisher()
     }
     
-    func getDetail(id: Int, season: Int, number: Int) -> AnyPublisher<Movie, Error> {
-        return Future<Movie, Error> { completion in
+    func getDetail(id: Int, season: Int, number: Int) -> AnyPublisher<TvShow, Error> {
+        return Future<TvShow, Error> { completion in
             guard let url = URL(string: Endpoints.Get.episodeByNumber(id).url) else {
                 return
             }
             
             self.session.request(url, parameters: ["season": season, "number": number])
                 .validate()
-                .responseDecodable(of: Movie.self) { response in
+                .responseDecodable(of: TvShow.self) { response in
                     switch response.result {
                     case .success(let value):
                         completion(.success(value))

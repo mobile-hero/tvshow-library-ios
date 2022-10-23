@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  movie-library-ios
+//  tvShow-library-ios
 //
 //  Created by Majoo Apple  on 26/09/22.
 //

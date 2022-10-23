@@ -1,6 +1,6 @@
 //
 //  DetailView.swift
-//  movie-library-ios
+//  tvShow-library-ios
 //
 //  Created by Majoo Apple  on 15/10/22.
 //
@@ -20,26 +20,42 @@ struct DetailView: View {
             if presenter.loadingState {
                 Text("Loading...")
                 ActivityIndicator()
-            } else if presenter.detailMovie != nil {
-                let detail = presenter.detailMovie!
+            } else if presenter.detailTvShow != nil {
                 ScrollView{
                     VStack(alignment: .leading) {
-                        let width = UIScreen.main.bounds.width
-                        WebImage(url: URL(string: detail.imageOriginal))
-                            .onSuccess(perform: { image, data, cacheType in
-                                print(image.size)
-                                self.aspectRatio = image.size.width / image.size.height
-                                self.imageHeight = width / aspectRatio
-                            })
-                            .resizable()
-                            .placeholder {
-                                Rectangle().foregroundColor(.gray)
+                        let detail = presenter.detailTvShow!
+                        ZStack(alignment: .bottomTrailing) {
+                            let width = UIScreen.main.bounds.width
+                            WebImage(url: URL(string: detail.imageOriginal))
+                                .onSuccess(perform: { image, data, cacheType in
+                                    print(image.size)
+                                    self.aspectRatio = image.size.width / image.size.height
+                                    self.imageHeight = width / aspectRatio
+                                })
+                                .resizable()
+                                .placeholder {
+                                    Rectangle().foregroundColor(.gray)
+                                }
+                                .indicator(.activity)
+                                .aspectRatio(aspectRatio, contentMode: .fit)
+                                .frame(width: width, height: imageHeight, alignment: .center)
+                                .padding(.bottom, 5)
+                                .clipped()
+                            let isFavorite = presenter.isFavorite
+                            Button(isFavorite ? "Remove Favorite" : "Add Favorite") {
+                                if isFavorite {
+                                    presenter.removeFavorite()
+                                } else {
+                                    presenter.addFavorite()
+                                }
                             }
-                            .indicator(.activity)
-                            .aspectRatio(aspectRatio, contentMode: .fit)
-                            .frame(width: width, height: imageHeight, alignment: .center)
-                            .padding(.bottom, 5)
-                            .clipped()
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(isFavorite ? Color.red : Color.green)
+                            .clipShape(Capsule())
+                            .padding(10)
+                            
+                        }
                         VStack(alignment: .leading) {
                             Text(detail.showName)
                                 .font(Font.system(size: 16))
@@ -51,7 +67,7 @@ struct DetailView: View {
                                 .foregroundColor(.indigo)
                             Divider()
                                 .padding(.vertical, 10)
-                            Text(AttributedString(detail.formattedSummary))
+                            Text(AttributedString(detail.formattedSummary!))
                         }
                         .padding(.horizontal, 8)
                     }

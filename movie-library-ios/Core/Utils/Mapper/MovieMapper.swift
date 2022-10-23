@@ -1,16 +1,16 @@
 //
-//  MovieMapper.swift
-//  movie-library-ios
+//  TvShowMapper.swift
+//  tvShow-library-ios
 //
 //  Created by Majoo Apple  on 26/09/22.
 //
 
 import Foundation
 
-final class MovieMapper {
-    static func mapMovieResponsesToDomains(input list: Movies) -> MovieModels {
+final class TvShowMapper {
+    static func mapTvShowResponsesToDomains(input list: TvShows) -> TvShowModels {
         return list.map { origin in
-            return MovieModel(
+            return TvShowModel(
                 id: origin.id,
                 showId: origin.show!.id,
                 showName: origin.show!.name,
@@ -24,8 +24,8 @@ final class MovieMapper {
         }
     }
     
-    static func mapMovieResponseToDomain(input origin: Movie) -> MovieModel {
-        return MovieModel(
+    static func mapTvShowResponseToDomain(input origin: TvShow) -> TvShowModel {
+        return TvShowModel(
             id: origin.id,
             showId: origin.show!.id,
             showName: origin.show!.name,
@@ -38,9 +38,9 @@ final class MovieMapper {
         )
     }
     
-    static func mapFavoriteEntityToDomains(input list: FavoriteMovieEntities) -> MovieModels {
+    static func mapFavoriteEntityToDomains(input list: FavoriteTvShowEntities) -> TvShowModels {
         return list.map { origin in
-            return MovieModel(
+            return TvShowModel(
                 id: origin.id,
                 showId: origin.showId,
                 showName: origin.showName,
@@ -54,8 +54,8 @@ final class MovieMapper {
         }
     }
     
-    static func mapMovieResponseToEntity(input origin: Movie) -> FavoriteMovieEntity {
-        let result = FavoriteMovieEntity()
+    static func mapTvShowResponseToEntity(input origin: TvShow) -> FavoriteTvShowEntity {
+        let result = FavoriteTvShowEntity()
         result.id = origin.id
         result.showId = origin.show!.id
         result.showName = origin.show!.name
@@ -68,8 +68,8 @@ final class MovieMapper {
         return result
     }
     
-    static func mapMovieDomainToEntity(input origin: MovieModel) -> FavoriteMovieEntity {
-        let result = FavoriteMovieEntity()
+    static func mapTvShowDomainToEntity(input origin: TvShowModel) -> FavoriteTvShowEntity {
+        let result = FavoriteTvShowEntity()
         result.id = origin.id
         result.showId = origin.showId
         result.showName = origin.showName

@@ -1,13 +1,13 @@
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
-//   let movies = try? newJSONDecoder().decode(Movies.self, from: jsonData)
+//   let tvShows = try? newJSONDecoder().decode(TvShows.self, from: jsonData)
 
 //
 // To read values from URLs:
 //
-//   let task = URLSession.shared.movieTask(with: url) { movie, response, error in
-//     if let movie = movie {
+//   let task = URLSession.shared.tvShowTask(with: url) { tvShow, response, error in
+//     if let tvShow = tvShow {
 //       ...
 //     }
 //   }
@@ -20,8 +20,8 @@
 
 import Foundation
 
-// MARK: - Movie
-struct Movie: Codable, Equatable, Identifiable {
+// MARK: - TvShow
+struct TvShow: Codable, Equatable, Identifiable {
     let id: Int
     let url: String
     let name: String
@@ -36,7 +36,7 @@ struct Movie: Codable, Equatable, Identifiable {
     let image: ImageObject?
     let summary: String?
     let show: Show?
-    let links: MovieLinks
+    let links: TvShowLinks
 
     enum CodingKeys: String, CodingKey {
         case id, url, name, season, number, type, airdate, airtime, airstamp, runtime, rating, image, summary, show
@@ -44,7 +44,7 @@ struct Movie: Codable, Equatable, Identifiable {
     }
 }
 
-typealias Movies = [Movie]
+typealias TvShows = [TvShow]
 
 //
 // To read values from URLs:
@@ -70,8 +70,8 @@ struct ImageObject: Codable, Equatable {
 //
 // To read values from URLs:
 //
-//   let task = URLSession.shared.movieLinksTask(with: url) { movieLinks, response, error in
-//     if let movieLinks = movieLinks {
+//   let task = URLSession.shared.tvShowLinksTask(with: url) { tvShowLinks, response, error in
+//     if let tvShowLinks = tvShowLinks {
 //       ...
 //     }
 //   }
@@ -82,8 +82,8 @@ struct ImageObject: Codable, Equatable {
 // for types that require the use of JSONAny, nor will the implementation of Hashable be
 // synthesized for types that have collections (such as arrays or dictionaries).
 
-// MARK: - MovieLinks
-struct MovieLinks: Codable, Equatable {
+// MARK: - TvShowLinks
+struct TvShowLinks: Codable, Equatable {
     let linksSelf: SelfClass
 
     enum CodingKeys: String, CodingKey {
@@ -395,7 +395,7 @@ enum APIError: LocalizedError, Hashable, Equatable {
 //        }
 //    }
 //
-////    func moviesTask(completionHandler: @escaping (Movies?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+////    func tvShowsTask(completionHandler: @escaping (TvShows?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
 ////        return self.codableTask(with: URL(string: baseUrl + "schedule")!, completionHandler: completionHandler)
 ////    }
 //}

@@ -1,6 +1,6 @@
 //
 //  HomeView.swift
-//  movie-library-ios
+//  tvShow-library-ios
 //
 //  Created by Majoo Apple  on 26/09/22.
 //
@@ -25,15 +25,15 @@ struct HomeView: View {
                     Text("Loading...")
                     ActivityIndicator()
                 }
-            } else if !presenter.movies.isEmpty {
+            } else if !presenter.tvShows.isEmpty {
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVGrid(columns: self.columns, spacing: 5) {
                         ForEach(
-                            self.presenter.movies,
+                            self.presenter.tvShows,
                             id: \.id
-                        ) { movie in
-                            self.presenter.linkBuilder(for: movie) {
-                                ShowCell(show: movie)
+                        ) { tvShow in
+                            self.presenter.linkBuilder(for: tvShow) {
+                                ShowCell(show: tvShow)
                             }.buttonStyle(PlainButtonStyle())
                         }
                     }
@@ -42,11 +42,11 @@ struct HomeView: View {
                 Text(presenter.errorMessage)
             }
         }.onAppear {
-            if self.presenter.movies.count == 0 {
-                self.presenter.getMovies()
+            if self.presenter.tvShows.count == 0 {
+                self.presenter.getTvShows()
             }
         }.navigationBarTitle(
-            Text("Movies"),
+            Text("TvShows"),
             displayMode: .automatic
         )
     }
@@ -73,7 +73,7 @@ struct CGFloatKey: PreferenceKey {
 
 struct ShowCell: View {
     
-    var show: MovieModel
+    var show: TvShowModel
     @State private var imgSize = CGSize.zero
     @State private var width = 0.0
     
@@ -105,15 +105,15 @@ struct ShowCell: View {
 }
 
 
-typealias GridViewTap = (MovieModel) -> Void
+typealias GridViewTap = (TvShowModel) -> Void
 
 struct GridView: UIViewRepresentable {
     
-    public var dataSource: MovieModels
+    public var dataSource: TvShowModels
     private let layout: UICollectionViewFlowLayout
     private let onTap: GridViewTap
     
-    init(_ dataSource: MovieModels, onTap: @escaping GridViewTap) {
+    init(_ dataSource: TvShowModels, onTap: @escaping GridViewTap) {
         self.dataSource = dataSource
         self.onTap = onTap
         layout = UICollectionViewFlowLayout()
@@ -123,7 +123,7 @@ struct GridView: UIViewRepresentable {
         let clView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         clView.delegate = context.coordinator
         clView.dataSource = context.coordinator
-        clView.registerCell(MovieViewCell.self)
+        clView.registerCell(TvShowViewCell.self)
         return clView
     }
     
@@ -137,15 +137,15 @@ struct GridView: UIViewRepresentable {
 }
 
 protocol GridViewInterfaceDelegate {
-    func onTap(item: MovieModel)
+    func onTap(item: TvShowModel)
 }
 
 class GridViewInterface: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    var dataSource: MovieModels
+    var dataSource: TvShowModels
     var delegate: GridViewInterfaceDelegate?
     var onTap: GridViewTap
     
-    init(dataSource: MovieModels, onTap: @escaping GridViewTap) {
+    init(dataSource: TvShowModels, onTap: @escaping GridViewTap) {
         self.dataSource = dataSource
         self.onTap = onTap
     }
@@ -161,7 +161,7 @@ class GridViewInterface: NSObject, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: MovieViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieViewCell.stringIdentifier, for: indexPath) as! MovieViewCell
+        let cell: TvShowViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: TvShowViewCell.stringIdentifier, for: indexPath) as! TvShowViewCell
         cell.configure(item: dataSource[indexPath.row])
         return cell
     }
@@ -190,7 +190,7 @@ extension UICollectionView {
     }
 }
 
-class MovieViewCell: UICollectionViewCell {
+class TvShowViewCell: UICollectionViewCell {
     
     private let image = UIImageView()
     private let nameLabel = UILabel()
@@ -245,7 +245,7 @@ class MovieViewCell: UICollectionViewCell {
         titleLabel.numberOfLines = 2
     }
     
-    func configure(item: MovieModel) {
+    func configure(item: TvShowModel) {
         image.sd_setImage(with: URL(string: item.image))
         nameLabel.text = item.showName
         titleLabel.text = item.name

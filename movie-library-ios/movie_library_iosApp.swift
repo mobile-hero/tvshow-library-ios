@@ -1,6 +1,6 @@
 //
-//  movie_library_iosApp.swift
-//  movie-library-ios
+//  tvShow_library_iosApp.swift
+//  tvShow-library-ios
 //
 //  Created by Majoo Apple  on 26/09/22.
 //
@@ -9,7 +9,7 @@ import SwiftUI
 import Alamofire
 
 @main
-struct movie_library_iosApp: App {
+struct tvShow_library_iosApp: App {
     let persistenceController = PersistenceController.shared
     
     let injection = Injection()

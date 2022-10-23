@@ -1,6 +1,6 @@
 //
-//  MovieClient.swift
-//  movie-library-composable
+//  TvShowClient.swift
+//  tvShow-library-composable
 //
 //  Created by Majoo Apple  on 28/08/22.
 //
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-struct MovieAPI {
+struct TvShowAPI {
     static let baseUrl = "https://api.tvmaze.com/"
 }
 
@@ -18,29 +18,29 @@ protocol Endpoint {
 
 enum Endpoints {
     enum Get: Endpoint {
-        case movies
+        case tvShows
         case episodeByNumber(Int)
         
         var url: String {
             let path: String = {
                 switch self {
-                case .movies: return "schedule"
+                case .tvShows: return "schedule"
                 case .episodeByNumber(let id): return "shows/\(id)/episodebynumber"
                 }
             }()
             
-            return MovieAPI.baseUrl + path
+            return TvShowAPI.baseUrl + path
         }
     }
 }
 
-class MovieClient {
+class TvShowClient {
     
     
     
-//    func loadMovies() -> Effect<Movies, APIError> {
+//    func loadTvShows() -> Effect<TvShows, APIError> {
 //        let url = URL(string: baseUrl + "schedule")!
-//        let publisher: AnyPublisher<Movies, Error> = URLSession.shared.codableTask(with: url)
+//        let publisher: AnyPublisher<TvShows, Error> = URLSession.shared.codableTask(with: url)
 //        let values = publisher.values
 //        print(values)
 //        return publisher.mapError {
@@ -51,7 +51,7 @@ class MovieClient {
 //            }
 //        }.eraseToEffect()
 //        return Effect.run(priority: .userInitiated) { send in
-//            let publisher: AnyPublisher<Movies, Error> = URLSession.shared.codableTask(with: url)
+//            let publisher: AnyPublisher<TvShows, Error> = URLSession.shared.codableTask(with: url)
 //            let values = publisher.values
 //            print(values)
 //            send(publisher.eraseToEffect())
@@ -62,9 +62,9 @@ class MovieClient {
         
 //        return URLSession.shared.dataTaskPublisher(for: url)
 //            .map(\.data)
-//            .decode(type: Movies.self, decoder: newJSONDecoder())
+//            .decode(type: TvShows.self, decoder: newJSONDecoder())
 //            .eraseToAnyPublisher()
-//        let task = URLSession.shared.codableTask(with: url).map(Movie.init).receive(on: DispatchQueue.main).sink { response in
+//        let task = URLSession.shared.codableTask(with: url).map(TvShow.init).receive(on: DispatchQueue.main).sink { response in
 //            switch response {
 //            case .failure(let error):
 //                print("Failed with error: \(error)")

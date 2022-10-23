@@ -1,13 +1,13 @@
 //
-//  MovieModel.swift
-//  movie-library-ios
+//  TvShowModel.swift
+//  tvShow-library-ios
 //
 //  Created by Majoo Apple  on 26/09/22.
 //
 
 import Foundation
 
-struct MovieModel: Equatable, Identifiable {
+struct TvShowModel: Equatable, Identifiable {
     let id: Int
     let showId: Int
     let showName: String
@@ -19,4 +19,4 @@ struct MovieModel: Equatable, Identifiable {
     let number: Int
 }
 
-typealias MovieModels = [MovieModel]
+typealias TvShowModels = [TvShowModel]

@@ -1,6 +1,6 @@
 //
 //  HomePresenter.swift
-//  movie-library-ios
+//  tvShow-library-ios
 //
 //  Created by Majoo Apple  on 26/09/22.
 //
@@ -14,7 +14,7 @@ class HomePresenter: ObservableObject {
     private var router = HomeRouter()
     private let homeUseCase: HomeUseCase
     
-    @Published var movies: MovieModels = []
+    @Published var tvShows: TvShowModels = []
     @Published var errorMessage: String = ""
     @Published var loadingState: Bool = false
     
@@ -22,9 +22,9 @@ class HomePresenter: ObservableObject {
         self.homeUseCase = homeUseCase
     }
     
-    func getMovies() {
+    func getTvShows() {
         loadingState = true
-        homeUseCase.getMovies()
+        homeUseCase.getTvShows()
             .receive(on: RunLoop.main)
             .sink { completion in
                 switch completion {
@@ -34,16 +34,16 @@ class HomePresenter: ObservableObject {
                 case .finished:
                     self.loadingState = false
                 }
-            } receiveValue: { movies in
-                self.movies = movies
+            } receiveValue: { tvShows in
+                self.tvShows = tvShows
             }
             .store(in: &cancellables)
     }
     
     func linkBuilder<Content: View>(
-        for movie: MovieModel,
+        for tvShow: TvShowModel,
         @ViewBuilder content: () -> Content
     ) -> some View {
-        NavigationLink(destination: router.makeDetailView(for: movie)) { content() }
+        NavigationLink(destination: router.makeDetailView(for: tvShow)) { content() }
     }
 }

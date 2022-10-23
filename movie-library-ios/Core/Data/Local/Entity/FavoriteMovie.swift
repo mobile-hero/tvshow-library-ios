@@ -1,6 +1,6 @@
 //
-//  FavoriteMovie.swift
-//  movie-library-ios
+//  FavoriteTvShow.swift
+//  tvShow-library-ios
 //
 //  Created by Majoo Apple  on 26/09/22.
 //
@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class FavoriteMovieEntity: Object {
+class FavoriteTvShowEntity: Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var showId: Int = 0
     @objc dynamic var showName: String = ""
@@ -24,4 +24,4 @@ class FavoriteMovieEntity: Object {
     }
 }
 
-typealias FavoriteMovieEntities = [FavoriteMovieEntity]
+typealias FavoriteTvShowEntities = [FavoriteTvShowEntity]

@@ -1,6 +1,6 @@
 //
-//  MovieRepository.swift
-//  movie-library-ios
+//  TvShowRepository.swift
+//  tvShow-library-ios
 //
 //  Created by Majoo Apple  on 26/09/22.
 //
@@ -8,16 +8,17 @@
 import Foundation
 import Combine
 
-protocol MovieRepositoryProtocol {
-    func getMovies() -> AnyPublisher<MovieModels, Error>
-    func getDetail(id: Int, season: Int, number: Int) -> AnyPublisher<DetailMovieModel, Error>
-    func getFavoriteMovies() -> AnyPublisher<MovieModels, Error>
-    func addFavorite(movie: MovieModel) -> AnyPublisher<Bool, Error>
-    func removeFavorite(movie: MovieModel) -> AnyPublisher<Bool, Error>
+protocol TvShowRepositoryProtocol {
+    func getTvShows() -> AnyPublisher<TvShowModels, Error>
+    func getDetail(id: Int, season: Int, number: Int) -> AnyPublisher<DetailTvShowModel, Error>
+    func getFavoriteTvShows() -> AnyPublisher<TvShowModels, Error>
+    func isFavorite(id: Int) -> AnyPublisher<Bool, Error>
+    func addFavorite(tvShow: TvShowModel) -> AnyPublisher<Bool, Error>
+    func removeFavorite(id: Int) -> AnyPublisher<Bool, Error>
 }
 
-final class MovieRepository: NSObject {
-    typealias MovieInstance = (LocaleDataSource, RemoteDataSource) -> MovieRepository
+final class TvShowRepository: NSObject {
+    typealias TvShowInstance = (LocaleDataSource, RemoteDataSource) -> TvShowRepository
     
     fileprivate let remote: RemoteDataSource
     fileprivate let locale: LocaleDataSource
@@ -27,39 +28,40 @@ final class MovieRepository: NSObject {
         self.remote = remote
     }
     
-    static let sharedInstance: MovieInstance = { locale, remote in
-        return MovieRepository(locale: locale, remote: remote)
+    static let sharedInstance: TvShowInstance = { locale, remote in
+        return TvShowRepository(locale: locale, remote: remote)
     }
 }
 
-extension MovieRepository: MovieRepositoryProtocol {
-    func getMovies() -> AnyPublisher<MovieModels, Error> {
-        return remote.getMovies().map {
-            MovieMapper.mapMovieResponsesToDomains(input: $0)
+extension TvShowRepository: TvShowRepositoryProtocol {
+    func getTvShows() -> AnyPublisher<TvShowModels, Error> {
+        return remote.getTvShows().map {
+            TvShowMapper.mapTvShowResponsesToDomains(input: $0)
         }.eraseToAnyPublisher()
     }
     
-    func getDetail(id: Int, season: Int, number: Int) -> AnyPublisher<DetailMovieModel, Error> {
+    func getDetail(id: Int, season: Int, number: Int) -> AnyPublisher<DetailTvShowModel, Error> {
         return remote.getDetail(id: id, season: season, number: number).map {
-            DetailMovieMapper.mapMovieResponseToDomain(input: $0)
+            DetailTvShowMapper.mapTvShowResponseToDomain(input: $0)
         }.eraseToAnyPublisher()
     }
     
-    func getFavoriteMovies() -> AnyPublisher<MovieModels, Error> {
+    func getFavoriteTvShows() -> AnyPublisher<TvShowModels, Error> {
         return locale.getFavorites().map {
-            MovieMapper.mapFavoriteEntityToDomains(input: $0)
+            TvShowMapper.mapFavoriteEntityToDomains(input: $0)
         }.eraseToAnyPublisher()
     }
     
-    func addFavorite(movie: MovieModel) -> AnyPublisher<Bool, Error> {
-        return locale.add(movie: MovieMapper.mapMovieDomainToEntity(input: movie))
+    func isFavorite(id: Int) -> AnyPublisher<Bool, Error> {
+        return locale.isFavorite(id: id)
+    }
+    
+    func addFavorite(tvShow: TvShowModel) -> AnyPublisher<Bool, Error> {
+        return locale.add(tvShow: TvShowMapper.mapTvShowDomainToEntity(input: tvShow))
             .eraseToAnyPublisher()
     }
     
-    func removeFavorite(movie: MovieModel) -> AnyPublisher<Bool, Error> {
-        return locale.remove(movie: MovieMapper.mapMovieDomainToEntity(input: movie))
-            .eraseToAnyPublisher()
+    func removeFavorite(id: Int) -> AnyPublisher<Bool, Error> {
+        return locale.remove(id: id)
     }
-    
-    
 }
