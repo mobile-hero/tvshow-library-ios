@@ -40,12 +40,7 @@
 		FFA6EEBE28E1C2D4009708CA /* MovieMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6EEBD28E1C2D4009708CA /* MovieMapper.swift */; };
 		FFA6EEC028E1CC62009708CA /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6EEBF28E1CC62009708CA /* HomeRouter.swift */; };
 		FFA6EEC228E1D432009708CA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6EEC128E1D432009708CA /* HomeView.swift */; };
-		FFA6EECA28E1D4CE009708CA /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6EEC728E1D4C4009708CA /* SearchBar.swift */; };
-		FFA6EECB28E1D4CE009708CA /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6EEC528E1D4C4009708CA /* RoundedCorner.swift */; };
-		FFA6EECC28E1D4CE009708CA /* CustomIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6EEC828E1D4C4009708CA /* CustomIcon.swift */; };
-		FFA6EECD28E1D4CE009708CA /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6EEC328E1D4C4009708CA /* TabItem.swift */; };
 		FFA6EECE28E1D4CE009708CA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6EEC928E1D4C4009708CA /* ActivityIndicator.swift */; };
-		FFA6EECF28E1D4CE009708CA /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6EEC628E1D4C4009708CA /* BlurView.swift */; };
 		FFA6EED028E1D4CE009708CA /* CustomEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6EEC428E1D4C4009708CA /* CustomEmptyView.swift */; };
 		FFAB8DE52904171E00F45134 /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAB8DE42904171E00F45134 /* FavoritePresenter.swift */; };
 		FFAB8DE7290417CB00F45134 /* GetFavoritesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAB8DE6290417CB00F45134 /* GetFavoritesInteractor.swift */; };
@@ -111,12 +106,7 @@
 		FFA6EEBD28E1C2D4009708CA /* MovieMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMapper.swift; sourceTree = "<group>"; };
 		FFA6EEBF28E1CC62009708CA /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		FFA6EEC128E1D432009708CA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		FFA6EEC328E1D4C4009708CA /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		FFA6EEC428E1D4C4009708CA /* CustomEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEmptyView.swift; sourceTree = "<group>"; };
-		FFA6EEC528E1D4C4009708CA /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
-		FFA6EEC628E1D4C4009708CA /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		FFA6EEC728E1D4C4009708CA /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
-		FFA6EEC828E1D4C4009708CA /* CustomIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIcon.swift; sourceTree = "<group>"; };
 		FFA6EEC928E1D4C4009708CA /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		FFAB8DE42904171E00F45134 /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		FFAB8DE6290417CB00F45134 /* GetFavoritesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoritesInteractor.swift; sourceTree = "<group>"; };
@@ -310,12 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				FFA6EEC928E1D4C4009708CA /* ActivityIndicator.swift */,
-				FFA6EEC628E1D4C4009708CA /* BlurView.swift */,
 				FFA6EEC428E1D4C4009708CA /* CustomEmptyView.swift */,
-				FFA6EEC828E1D4C4009708CA /* CustomIcon.swift */,
-				FFA6EEC528E1D4C4009708CA /* RoundedCorner.swift */,
-				FFA6EEC728E1D4C4009708CA /* SearchBar.swift */,
-				FFA6EEC328E1D4C4009708CA /* TabItem.swift */,
 				FF81B5992904E70D0068BF72 /* ShowCell.swift */,
 			);
 			path = View;
@@ -659,7 +644,6 @@
 				FFA6EEB228E1B322009708CA /* CustomError+Ext.swift in Sources */,
 				FF81B58F2904B98E0068BF72 /* GetFavoriteStatusInteractor.swift in Sources */,
 				FFAB8DE7290417CB00F45134 /* GetFavoritesInteractor.swift in Sources */,
-				FFA6EECC28E1D4CE009708CA /* CustomIcon.swift in Sources */,
 				FFAB8DE52904171E00F45134 /* FavoritePresenter.swift in Sources */,
 				FFA6EE6128E16E1B009708CA /* movie_library_ios.xcdatamodeld in Sources */,
 				FFB71B1C28FB02580041EF7F /* DetailMovieMapper.swift in Sources */,
@@ -667,7 +651,6 @@
 				FFA6EEC028E1CC62009708CA /* HomeRouter.swift in Sources */,
 				FFB71B1A28FB00C60041EF7F /* DetailMovieModel.swift in Sources */,
 				FF81B5932904E1F40068BF72 /* FavoriteRouter.swift in Sources */,
-				FFA6EECD28E1D4CE009708CA /* TabItem.swift in Sources */,
 				FF81B5982904E34B0068BF72 /* MainTabView.swift in Sources */,
 				FFA6EEC228E1D432009708CA /* HomeView.swift in Sources */,
 				FF81B59D2904EC6B0068BF72 /* AboutView.swift in Sources */,
@@ -676,15 +659,12 @@
 				FFA6EEB028E1B04D009708CA /* LocaleDataSource.swift in Sources */,
 				FFA6EEBC28E1BE6E009708CA /* MovieRepository.swift in Sources */,
 				FFB71B1428FA8C0B0041EF7F /* DetailView.swift in Sources */,
-				FFA6EECB28E1D4CE009708CA /* RoundedCorner.swift in Sources */,
 				FFA6EE5E28E16E1B009708CA /* Persistence.swift in Sources */,
 				FFEE0DA828F71B6E00ABAA83 /* NetworkLogger.swift in Sources */,
 				FFB71B1828FA918F0041EF7F /* DetailInteractor.swift in Sources */,
-				FFA6EECF28E1D4CE009708CA /* BlurView.swift in Sources */,
 				FFA6EE5728E16E16009708CA /* ContentView.swift in Sources */,
 				FFB71B1628FA8C170041EF7F /* DetailRouter.swift in Sources */,
 				FFA6EEAC28E19051009708CA /* HomePresenter.swift in Sources */,
-				FFA6EECA28E1D4CE009708CA /* SearchBar.swift in Sources */,
 				FFA6EEA228E18369009708CA /* RemoteDataSource.swift in Sources */,
 				FFA6EE5528E16E16009708CA /* movie_library_iosApp.swift in Sources */,
 				FFA6EEB828E1BCA8009708CA /* HomeInteractor.swift in Sources */,

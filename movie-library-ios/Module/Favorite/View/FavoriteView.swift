@@ -34,6 +34,8 @@ struct FavoriteView: View {
                             }
                         }
                     }
+                } else if presenter.tvShows.isEmpty {
+                    CustomEmptyView(image: "film.fill", title: "Anda belum menambahkan show favorit")
                 } else {
                     Text(presenter.errorMessage)
                 }
